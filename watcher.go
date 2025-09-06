@@ -7,12 +7,12 @@ import (
 	"github.com/fsnotify/fsnotify"
 )
 
-type evtCb struct {
+type EvtCb struct {
 	fsnotify.Op
 	cb func(fsnotify.Event)
 }
 
-func Watcher(path string, evt evtCb) (watcher *fsnotify.Watcher) {
+func Watcher(path string, evt EvtCb) (watcher *fsnotify.Watcher) {
 	var err error
 	// Create new watcher.
 	watcher, err = fsnotify.NewWatcher()
