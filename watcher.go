@@ -9,7 +9,7 @@ import (
 
 type EvtCb struct {
 	fsnotify.Op
-	cb func(fsnotify.Event)
+	Cb func(fsnotify.Event)
 }
 
 func Watcher(path string, evt EvtCb) (watcher *fsnotify.Watcher) {
@@ -32,7 +32,7 @@ func Watcher(path string, evt EvtCb) (watcher *fsnotify.Watcher) {
 				if event.Has(evt.Op) {
 					if is1st { //prevent double event
 						is1st = false
-						evt.cb(event)
+						evt.Cb(event)
 					}
 					go func() {
 						time.Sleep(time.Second)
